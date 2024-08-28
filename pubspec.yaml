@@ -14,6 +14,10 @@ dependencies:
   flutter_native_splash: 2.4.1
   hive_flutter:
   hive:
+  equatable:
+  bloc:
+  flutter_bloc:
+  intl:
 
 
 

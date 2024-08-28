@@ -10,10 +10,16 @@ class PasswordModel {
   final String usernameOREmail;
   @HiveField(2)
   String password;
+  @HiveField(3)
+  DateTime dateTime;
+  @HiveField(4)
+  String key;
 
   PasswordModel({
     required this.password,
     required this.title,
     required this.usernameOREmail,
+    required this.dateTime,
+    this.key = '',
   });
 }

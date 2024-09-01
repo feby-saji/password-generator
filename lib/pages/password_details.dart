@@ -61,6 +61,7 @@ class PasswordDetailsScreen extends StatelessWidget {
                 );
               },
             ),
+            
             const Spacer(), // bottom buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

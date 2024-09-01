@@ -15,9 +15,10 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(PasswordModelAdapter());
   await HiveDb().init();
-
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         theme: KThemeData.lightThemeData, // Light theme
         darkTheme: KThemeData.darkThemeData, // Dark theme
         themeMode: ThemeMode.system,
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

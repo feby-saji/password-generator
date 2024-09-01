@@ -4,6 +4,8 @@ import 'package:password_manager/common_widgets/text_field_widget.dart';
 import 'package:password_manager/constants/helper_functions.dart';
 import 'package:password_manager/models/password_model.dart';
 import 'package:password_manager/pages/Home%20page/Bloc/home_bloc.dart';
+import 'package:password_manager/pages/generate_password/BLoc/update_password_bloc.dart';
+import 'package:password_manager/pages/generate_password/BLoc/update_password_state.dart';
 import 'package:password_manager/pages/generate_password/generate_password.dart';
 
 import '../constants/styles/sizes.dart';
@@ -51,9 +53,16 @@ class AddPasswordScreen extends StatelessWidget {
                 ),
                 HelperFunc.verticalSizedBox(context, height: 0.08),
 
-                TextFieldWidget(
-                  controller: _passwordController,
-                  hintText: 'password',
+                BlocListener<GeneratePasswordBloc, GeneratePasswordState>(
+                  listener: (context, state) {
+                    if (state.password.isNotEmpty) {
+                      _passwordController.text = state.password;
+                    }
+                  },
+                  child: TextFieldWidget(
+                    controller: _passwordController,
+                    hintText: 'password',
+                  ),
                 ),
                 HelperFunc.verticalSizedBox(context, height: 0.1),
 

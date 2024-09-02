@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:password_manager/constants/helper_functions.dart';
 import 'package:password_manager/pages/Home%20page/widget_functions/password_item.dart';
 import 'package:password_manager/pages/add_password.dart';
-import 'package:password_manager/pages/password_details.dart';
+import 'package:password_manager/pages/password%20details/password_details.dart';
 
 import '../../common_widgets/text_field_widget.dart';
 import '../../constants/styles/sizes.dart';

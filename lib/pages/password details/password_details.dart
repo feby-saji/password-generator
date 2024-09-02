@@ -7,11 +7,12 @@ import 'package:password_manager/models/password_model.dart';
 import 'package:password_manager/pages/Home%20page/Bloc/home_bloc.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_bloc.dart';
 import 'package:password_manager/pages/generate_password/generate_password.dart';
+import 'package:password_manager/pages/password%20details/cubit/hide_show_cubit.dart';
 
-import '../common_widgets/show_dialog.dart';
-import '../constants/styles/sizes.dart';
-import '../functions/formatdate.dart';
-import 'generate_password/BLoc/update_password_state.dart';
+import '../../common_widgets/show_dialog.dart';
+import '../../constants/styles/sizes.dart';
+import '../../functions/formatdate.dart';
+import '../generate_password/BLoc/update_password_state.dart';
 
 class PasswordDetailsScreen extends StatelessWidget {
   PasswordModel password;
@@ -27,7 +28,7 @@ class PasswordDetailsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,14 +55,19 @@ class PasswordDetailsScreen extends StatelessWidget {
 
             BlocBuilder<GeneratePasswordBloc, GeneratePasswordState>(
               builder: (context, state) {
-                return FieldTileWidget(
-                  icon: Icons.lock,
-                  text: password.password,
-                  copyIcon: true,
+                return BlocBuilder<HideShowCubit, bool>(
+                  builder: (cubitContext, hideState) {
+                    return FieldTileWidget(
+                      icon: Icons.lock,
+                      text: password.password,
+                      copyIcon: true,
+                      hidePass: hideState,
+                    );
+                  },
                 );
               },
             ),
-            
+
             const Spacer(), // bottom buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,30 +128,42 @@ class FieldTileWidget extends StatelessWidget {
   final IconData icon;
   final String text;
   final bool copyIcon;
+  final bool hidePass;
 
-  FieldTileWidget({
+  const FieldTileWidget({
     super.key,
     required this.icon,
     required this.text,
     this.copyIcon = false,
+    this.hidePass = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 01,
       child: Row(
         children: [
           Icon(icon),
-          const SizedBox(width: 10), // Space between icon and text
+          const SizedBox(width: 10),
           Expanded(
             child: Text(
-              text,
+              copyIcon
+                  ? hidePass == true
+                      ? text
+                      : text.replaceAll(RegExp(r"."), "*")
+                  : text,
               overflow: TextOverflow.ellipsis,
-              maxLines:
-                  1, // Keeps text on a single line with ellipsis if too long
+              maxLines: 1,
             ),
           ),
+          if (copyIcon)
+            GestureDetector(
+              onTap: () => context.read<HideShowCubit>().togglePassShowHide(),
+              child: Icon(hidePass ? Icons.visibility : Icons.visibility_off,
+                  color: KColors.iconColorPrimary),
+            ),
+          const SizedBox(width: 10),
           if (copyIcon)
             GestureDetector(
               onTap: () => copyShowSnackBar(context, text),

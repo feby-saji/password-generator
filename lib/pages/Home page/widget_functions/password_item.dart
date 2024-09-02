@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_manager/functions/copy_pass_show_snackbar.dart';
 import 'package:password_manager/models/password_model.dart';
 
 class PasswordItem extends StatelessWidget {
@@ -18,7 +19,9 @@ class PasswordItem extends StatelessWidget {
           passwordModel.title,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        trailing: Icon(Icons.copy),
+        trailing: GestureDetector(
+          onTap:() => copyPassShowSnackBar(context, TextEditingController(text:passwordModel.password)),
+          child: Icon(Icons.copy)),
         onTap: onTap,
       ),
     );

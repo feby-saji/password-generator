@@ -6,7 +6,7 @@ class GeneratePasswordState {
   final bool includeSpecialChars;
   final bool includeLowercase;
   final String error;
-
+ 
   const GeneratePasswordState({
     required this.password,
     required this.length,

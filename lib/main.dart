@@ -8,7 +8,6 @@ import 'package:password_manager/pages/Home%20page/Bloc/home_bloc.dart';
 import 'package:password_manager/pages/Home%20page/home_page.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_bloc.dart';
 import 'package:password_manager/pages/password%20details/cubit/hide_show_cubit.dart';
-
 import 'constants/helper_functions.dart';
 
 void main() async {
@@ -18,8 +17,6 @@ void main() async {
   await HiveDb().init();
   runApp(const MyApp());
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,14 +33,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeBloc(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => HideShowCubit(),
         )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: KThemeData.lightThemeData, // Light theme
-        darkTheme: KThemeData.darkThemeData, // Dark theme
+        theme: KThemeData.lightThemeData,
+        darkTheme: KThemeData.darkThemeData,
         themeMode: ThemeMode.system,
         home: const HomePage(),
       ),

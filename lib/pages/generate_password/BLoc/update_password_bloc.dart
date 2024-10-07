@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:http/http.dart' as http;
 import 'package:password_manager/hive_DB/db_functions.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_state.dart';
+
+import '../../../functions/generate_random_pass.dart';
 
 part 'update_password_event.dart';
 
@@ -23,29 +24,16 @@ class GeneratePasswordBloc
     GeneratePassword event,
     Emitter<GeneratePasswordState> emit,
   ) async {
-    String length = state.length.toString();
-    String includeUppercase = state.includeUppercase.toString();
-    String includeDigits = state.includeDigits.toString();
-    String includeSpecialChars = state.includeSpecialChars.toString();
-
-    Uri uri = Uri.parse(
-        'https://passwordgenerator-feby-sajis-projects.vercel.app/generatepassword?length=$length&includeUppercase=$includeUppercase&includeDigits=$includeDigits&includeSpecialChars=$includeSpecialChars');
-
     try {
-      final response = await http.get(uri);
-
-      if (response.statusCode == 200) {
-        print('status code : 200');
-        return emit(state.copyWith(password: response.body, error: ''));
-      } else if (response.statusCode == 400) {
-        print('status code : 400');
-        return emit(state.copyWith(error: response.body.toString()));
-      } else {
-        print('something went wrong');
-        print(response.body);
-      }
+      String? password = generateRandomPassword(
+        length: state.length.toInt(),
+        includeUppercase: state.includeUppercase,
+        includeLowercase: state.includeLowercase,
+        includeDigits: state.includeDigits,
+        includeSpecialChars: state.includeSpecialChars,
+      );
+      return emit(state.copyWith(password: password, error: ''));
     } catch (e) {
-      print('Error: $e');
       return emit(state.copyWith(error: e.toString()));
     }
   }

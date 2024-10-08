@@ -72,9 +72,10 @@ class GeneratePasswordScreen extends StatelessWidget {
                                 .textTheme
                                 .bodyMedium
                                 ?.copyWith(
-                                    color: HelperFunc.isDarkTheme(context)
-                                        ? Colors.black87
-                                        : Colors.white70),
+                                  color: HelperFunc.isDarkTheme(context)
+                                      ? Colors.black87
+                                      : Colors.white70,
+                                ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -97,23 +98,7 @@ class GeneratePasswordScreen extends StatelessWidget {
               builder: (context, state) {
                 return Column(
                   children: [
-                    Slider(
-                      value: state.length,
-                      min: 4,
-                      max: 50,
-                      divisions: 42,
-                      activeColor: HelperFunc.isDarkTheme(context)
-                          ? Colors.white
-                          : KColors.cardBck,
-                      inactiveColor: HelperFunc.isDarkTheme(context)
-                          ? Colors.grey
-                          : Colors.white,
-                      onChanged: (value) {
-                        context
-                            .read<GeneratePasswordBloc>()
-                            .add(PasswordLengthChanged(value));
-                      },
-                    ),
+                    buildSlider(state, context),
                     Text(
                       state.length
                           .round()
@@ -188,6 +173,22 @@ class GeneratePasswordScreen extends StatelessWidget {
     );
   }
 
+  Slider buildSlider(GeneratePasswordState state, BuildContext context) {
+    return Slider(
+      value: state.length,
+      min: 4,
+      max: 50,
+      divisions: 42,
+      activeColor:
+          HelperFunc.isDarkTheme(context) ? Colors.white : KColors.cardBck,
+      inactiveColor:
+          HelperFunc.isDarkTheme(context) ? Colors.grey : Colors.white,
+      onChanged: (value) {
+        context.read<GeneratePasswordBloc>().add(PasswordLengthChanged(value));
+      },
+    );
+  }
+
   Widget _buildCheckboxTile(BuildContext context, String label, bool value,
       ValueChanged<bool?> onChanged) {
     return Container(
@@ -204,7 +205,7 @@ class GeneratePasswordScreen extends StatelessWidget {
           value: value,
           onChanged: onChanged,
           controlAffinity: ListTileControlAffinity.leading,
-          contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
           tileColor: Colors.transparent,
           visualDensity: VisualDensity.compact, // Reduce vertical density
           activeColor: Colors.white,

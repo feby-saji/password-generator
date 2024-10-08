@@ -7,11 +7,11 @@ import 'package:password_manager/models/password_model.dart';
 import 'package:password_manager/pages/Home%20page/Bloc/home_bloc.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_bloc.dart';
 import 'package:password_manager/pages/generate_password/generate_password.dart';
+import 'package:password_manager/pages/password%20details/cubit/date_time_password_cubit.dart';
 import 'package:password_manager/pages/password%20details/cubit/hide_show_cubit.dart';
 
 import '../../common_widgets/show_dialog.dart';
 import '../../constants/styles/sizes.dart';
-import '../../functions/formatdate.dart';
 import '../generate_password/BLoc/update_password_state.dart';
 
 class PasswordDetailsScreen extends StatelessWidget {
@@ -23,6 +23,8 @@ class PasswordDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<DateTimePasswordCubit>().showFormattedDate(password.dateTime);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -41,9 +43,13 @@ class PasswordDetailsScreen extends StatelessWidget {
               context,
               height: 0.2,
             ), //
-            FieldTileWidget(
-              icon: Icons.calendar_today,
-              text: formattedDate(password.dateTime),
+            BlocBuilder<DateTimePasswordCubit, String>(
+              builder: (context, state) {
+                return FieldTileWidget(
+                  icon: Icons.calendar_today,
+                  text: state.toString(),
+                );
+              },
             ),
             HelperFunc.verticalSizedBox(context, height: 0.1),
 

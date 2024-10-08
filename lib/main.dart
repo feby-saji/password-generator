@@ -7,7 +7,9 @@ import 'package:password_manager/models/password_model.dart';
 import 'package:password_manager/pages/Home%20page/Bloc/home_bloc.dart';
 import 'package:password_manager/pages/Home%20page/home_page.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_bloc.dart';
+import 'package:password_manager/pages/password%20details/cubit/date_time_password_cubit.dart';
 import 'package:password_manager/pages/password%20details/cubit/hide_show_cubit.dart';
+
 import 'constants/helper_functions.dart';
 
 void main() async {
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => HideShowCubit(),
+        ),
+        BlocProvider(
+          create: (context) => DateTimePasswordCubit(),
         )
       ],
       child: MaterialApp(

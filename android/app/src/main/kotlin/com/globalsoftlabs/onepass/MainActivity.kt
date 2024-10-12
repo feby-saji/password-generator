@@ -1,4 +1,4 @@
-package com.globalsoftlabs.password_manager
+package com.globalsoftlabs.onepass
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

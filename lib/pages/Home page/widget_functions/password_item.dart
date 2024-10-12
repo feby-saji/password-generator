@@ -6,7 +6,7 @@ class PasswordItem extends StatelessWidget {
   final PasswordModel passwordModel;
   Function() onTap;
 
-  PasswordItem({
+  PasswordItem({super.key, 
     required this.passwordModel,
     required this.onTap,
   });
@@ -21,7 +21,7 @@ class PasswordItem extends StatelessWidget {
         ),
         trailing: GestureDetector(
           onTap:() => copyPassShowSnackBar(context, TextEditingController(text:passwordModel.password)),
-          child: Icon(Icons.copy)),
+          child: const Icon(Icons.copy)),
         onTap: onTap,
       ),
     );

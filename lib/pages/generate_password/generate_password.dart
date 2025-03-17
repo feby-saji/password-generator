@@ -18,7 +18,16 @@ class GeneratePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+        key: ValueKey('goBackFromGeneratePassBtn'),
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Go back to the previous screen
+          },
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.only(
           top: KSizes.bodyMarginTop,
@@ -154,6 +163,7 @@ class GeneratePasswordScreen extends StatelessWidget {
             const Spacer(),
             Center(
               child: ElevatedButton(
+                key: ValueKey('generatePasswordBtn'),
                 onPressed: () {
                   context.read<GeneratePasswordBloc>().add(GeneratePassword());
                 },

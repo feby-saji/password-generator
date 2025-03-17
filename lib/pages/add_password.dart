@@ -7,7 +7,6 @@ import 'package:password_manager/pages/Home%20page/Bloc/home_bloc.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_bloc.dart';
 import 'package:password_manager/pages/generate_password/BLoc/update_password_state.dart';
 import 'package:password_manager/pages/generate_password/generate_password.dart';
-
 import '../constants/styles/sizes.dart';
 
 final formKey = GlobalKey<FormState>();
@@ -39,7 +38,7 @@ class AddPasswordScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 HelperFunc.verticalSizedBox(context, height: 0.2),
-                //
+
                 TextFieldWidget(
                   controller: _appNameController,
                   hintText: 'website / App Name',
@@ -69,6 +68,7 @@ class AddPasswordScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
+                    key: ValueKey('goToGeneratePasswordScreenBtn'),
                     onPressed: () {
                       HelperFunc.pushScreen(context, GeneratePasswordScreen());
                     },
@@ -83,6 +83,7 @@ class AddPasswordScreen extends StatelessWidget {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * 0.06,
                     child: ElevatedButton(
+                      key: ValueKey('addPassBtn'),
                       style: ElevatedButton.styleFrom(),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {

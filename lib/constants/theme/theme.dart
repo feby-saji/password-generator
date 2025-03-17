@@ -30,7 +30,7 @@ class KThemeData {
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ).copyWith(
-        iconColor: WidgetStateProperty.all(
+        iconColor: MaterialStateProperty.all(
             KColors.iconColorDark), // Define icon color for ElevatedButton
       ),
     ),
@@ -49,19 +49,19 @@ class KThemeData {
       prefixIconColor: KColors.iconColorLight,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: KColors.textFieldBorderColor),
+        borderSide: BorderSide(color: KColors.textFieldBorderColor),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: KColors.textFieldFocusBorderColor),
+        borderSide: BorderSide(color: KColors.textFieldFocusBorderColor),
       ),
-      hintStyle: const TextStyle(color: KColors.textFieldHintColor),
-      labelStyle: const TextStyle(color: KColors.textFieldLabelColor),
+      hintStyle: TextStyle(color: KColors.textFieldHintColor),
+      labelStyle: TextStyle(color: KColors.textFieldLabelColor),
     ),
 
     //
     listTileTheme: ListTileThemeData(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
       tileColor: KColors.cardBck,
       textColor: KColors.listTileTextColor,
       iconColor: KColors.listTileIconColor,
@@ -72,8 +72,8 @@ class KThemeData {
 
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
-      titleTextStyle: const TextStyle(color: Colors.white),
-      actionsIconTheme: const IconThemeData(color: Colors.white),
+      titleTextStyle: TextStyle(color: Colors.white),
+      actionsIconTheme: IconThemeData(color: Colors.white),
       iconTheme: IconThemeData(
         color: KColors.iconColorDark,
         size: 24.0,
@@ -97,7 +97,7 @@ class KThemeData {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.white,
-        textStyle: const TextStyle(fontSize: 16.0),
+        textStyle: TextStyle(fontSize: 16.0),
       ),
     ),
   );
@@ -135,7 +135,7 @@ class KThemeData {
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ).copyWith(
-        iconColor: WidgetStateProperty.all(KColors.iconColorLight),
+        iconColor: MaterialStateProperty.all(KColors.iconColorLight),
       ),
     ),
 
@@ -153,19 +153,19 @@ class KThemeData {
       prefixIconColor: KColors.iconColorLight,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: KColors.textFieldBorderColor),
+        borderSide: BorderSide(color: KColors.textFieldBorderColor),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: KColors.textFieldFocusBorderColor),
+        borderSide: BorderSide(color: KColors.textFieldFocusBorderColor),
       ),
-      hintStyle: const TextStyle(color: KColors.textFieldHintColor),
-      labelStyle: const TextStyle(color: KColors.textFieldLabelColor),
+      hintStyle: TextStyle(color: KColors.textFieldHintColor),
+      labelStyle: TextStyle(color: KColors.textFieldLabelColor),
     ),
 
     //
     listTileTheme: ListTileThemeData(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
       tileColor: KColors.cardBck,
       textColor: Colors.white,
       iconColor: KColors.listTileIconColor,
@@ -176,8 +176,8 @@ class KThemeData {
 
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
-      titleTextStyle: const TextStyle(color: Colors.white),
-      actionsIconTheme: const IconThemeData(color: Colors.white),
+      titleTextStyle: TextStyle(color: Colors.white),
+      actionsIconTheme: IconThemeData(color: Colors.white),
       iconTheme: IconThemeData(
         color: KColors.iconColorLight,
         size: 24.0,
@@ -200,7 +200,7 @@ class KThemeData {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.black,
-        textStyle: const TextStyle(fontSize: 16.0),
+        textStyle: TextStyle(fontSize: 16.0),
       ),
     ),
   );

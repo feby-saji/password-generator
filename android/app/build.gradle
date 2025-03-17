@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.globalsoftlabs.password_manager"
+    namespace = "com.globalsoftlabs.onepass"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
